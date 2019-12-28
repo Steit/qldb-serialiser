@@ -1,0 +1,34 @@
+{
+  "name": "qldb-serialiser",
+  "description": "QLDB ORM for Node.JS",
+  "version": "0.0.1-beta",
+  "maintainers": [
+    "Steit Slings<steit.slings@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steit/qldb-serialiser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/steit/qldb-serialiser/issues"
+  },
+  "main": "index.js",
+  "types": "types",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "amazon-qldb-driver-nodejs": "0.1.0-preview.2",
+    "aws-sdk": "^2.580.0"
+  },
+  "keywords": [
+    "qldb",
+    "orm",
+    "nodejs",
+    "object relational mapper"
+  ]
+}
