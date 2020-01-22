@@ -7,7 +7,7 @@ See [AWS Qldb node.js driver](https://www.npmjs.com/package/amazon-qldb-driver-n
 ## Installation
 
 ```bash
-$ npm install --save qldb-serialiser # Only master is available right now
+$ npm install qldb-serialiser
 ```
 or clone this project into your node_modules folder.
 ## Usage
@@ -21,7 +21,7 @@ let qldbSettings = {
     "region": process.env.AWS_REGION,
     "sslEnabled": true,
 };
-let qldb = new qldbConnect(qldbSettings);
+let qldb = new qldbConnect(process.env.QLDB_NAME, qldbSettings);
 qldb.getTableNames()
     .then(() => {
         console.log("Database has been connected")
@@ -41,6 +41,8 @@ Model example (/models/asset.model.js)
 ```javascript
 const {qldb, Ledger, DataTypes} = require('../config/qldb.connect');
 
+const AssetData = require('./asset_data.model');
+
 const Asset = new Ledger(qldb, 'Assets', {
         assetId: {
             type: DataTypes.STRING,
@@ -48,7 +50,8 @@ const Asset = new Ledger(qldb, 'Assets', {
             primaryKey: true,
         },
         assetData: {
-            type: DataTypes.OBJECT,
+            type: DataTypes.LEDGER,
+            model: AssetData,
             allowNull: true,
         },
         title: {
@@ -84,3 +87,23 @@ const Asset = new Ledger(qldb, 'Assets', {
 
 module.exports = Asset;
 ```
+Note that in the above sample nested models are made possible with the usage of the DataTypes.LEDGER. 
+
+When inserting data into the LEDGER type standard JSON is expected. All fieldnames are tested in the same way as any other model.
+ ```javascript
+{
+	"assetData":{
+        "id": "....",
+		"name": "....",
+		"description": "...."
+	},
+	"title":"....",
+	"description":"...."
+}
+```
+## Changes
+**version 0.0.3-beta**
+* Nested models
+* Added DataTpes.LEDGER
+* Cleaner ion to object creation
+* Updated dependencies
