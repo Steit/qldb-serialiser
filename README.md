@@ -63,8 +63,25 @@ const Asset = new Ledger(qldb, 'Assets', {
             allowNull: false,
         },
         owner: {
-            type: DataTypes.STRING,
+            type: DataTypes.OBJECT,
             allowNull: false,
+            model: {
+                individual: {
+                    type: DataTypes.ARRAY,
+                    model: {
+                        person: {
+                            type: DataTypes.LEDGER,
+                            model: Person,
+                            allowNull: false
+                        },
+                        percentage: {
+                            type: DataTypes.NUMBER,
+                            allowNull: false
+                        }
+                    },
+                    allowNull: false,
+                },
+            }
         },
         price: {
             type: DataTypes.NUMBER,
@@ -102,6 +119,11 @@ When inserting data into the LEDGER type standard JSON is expected. All fieldnam
 }
 ```
 ## Changes
+**version 1.0.0**
+* Added complex models
+* Added DataTypes.OBJECT and DataTypes.ARRAY
+* Refactoring of SQL Insert creation
+
 **version 0.0.3-beta**
 * Nested models
 * Added DataTpes.LEDGER
