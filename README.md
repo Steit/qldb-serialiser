@@ -118,7 +118,54 @@ When inserting data into the LEDGER type standard JSON is expected. All fieldnam
 	"description":"...."
 }
 ```
+## Using records
+The next samples show how to interact with the models to manipulate the data in the QLDB. The next few samples use the Asset model as described above.
+The sample functions are indicative. 
+### Reading a record
+Reads can be done in serveral ways. There are three functions; `'getAll()'`, `'getBy()'` and `'getByPk()'`. The `'getByPk()'` function is a wrapper around the `'getBy()'` function thet finds the Primary key of the model and based on that creates the where clause needed by the `'getBy()'` function.
+````javascript
+    async getAssetById(assetId){
+        let assetResult = await Asset.getByPk(assetId);
+        if(assetResult) return assetResult;
+        return false
+    }
+```` 
+Beware of using the `'getAll()`' function as QLDB at the moment does not support paginated results and will get all the records. This may end up in costly queries being run for a long time.
+
+### Adding or inserting record
+The adding of a record is done by passing the JSON containing all fields to the add function in the model. An example of the JSON format can be seen above.
+
+````javascript
+    async createAsset(asset){
+        let assetResult = await Asset.add(asset);
+        if(assetResult) return assetResult;
+        return false
+    }
+````
+
+### Updating a record
+To update a record simply pass the updated fields in a JSON model to the model. The form of the whereClause is the same as for a search action '{ fieldname: fieldValue }'. 
+```javascript
+    async updateAsset(whereClause, updates){
+        let assetResult = await Asset.update({fields: updates, where: whereClause})
+        if(assetResult) return assetResult;
+        return false
+
+    }
+```
+
 ## Changes
+**version 1.1.0**
+* Added update functionality.
+* Added record documentation.
+* Removed the logutil and ion TS helpers
+* Moved the ionparser to separate helper
+* More efficient use of the 'amazon-qldb-driver-nodejs' driver
+
+
+**version 1.0.2**
+* Modified LEDGER portion in base model mapping to allow references to existing documents
+
 **version 1.0.0**
 * Added complex models
 * Added DataTypes.OBJECT and DataTypes.ARRAY
