@@ -27,6 +27,9 @@ const  _ionJs = require("ion-js");
         case _ionJs.IonTypes.TIMESTAMP:
             fieldValue = ion.timestampValue().toString();
             break;
+        case _ionJs.IonTypes.BLOB:
+            fieldValue = ion.blobValue;
+            break;
         case _ionJs.IonTypes.STRUCT:
             let type;
             const currentDepth = ion.depth();
@@ -54,6 +57,7 @@ const  _ionJs = require("ion-js");
             return list;
             break;
         default:
+            fieldValue = ion.value;
     }
 
      return fieldValue;

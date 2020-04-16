@@ -107,7 +107,7 @@ module.exports = Asset;
 Note that in the above sample nested models are made possible with the usage of the DataTypes.LEDGER. 
 
 When inserting data into the LEDGER type standard JSON is expected. All fieldnames are tested in the same way as any other model.
- ```javascript
+ ```json
 {
 	"assetData":{
         "id": "....",
@@ -155,6 +155,12 @@ To update a record simply pass the updated fields in a JSON model to the model. 
 ```
 
 ## Changes
+**version 1.1.1**
+* Added getHistory & getHistoryByPk functions to retrieve all history for a record
+* Impoved Query generation
+* Updated to use amazon-qldb-driver-nodejs v. 0.1.2-preview.1
+* Changed behaviour of nested arrays to enable an array of linked ledger models
+
 **version 1.1.0**
 * Added update functionality.
 * Added record documentation.
