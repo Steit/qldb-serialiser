@@ -155,6 +155,9 @@ To update a record simply pass the updated fields in a JSON model to the model. 
 ```
 
 ## Changes
+**version 1.1.2**
+* Added nested updates for nested ledgers 
+
 **version 1.1.1**
 * Added getHistory & getHistoryByPk functions to retrieve all history for a record
 * Impoved Query generation
