@@ -155,6 +155,9 @@ To update a record simply pass the updated fields in a JSON model to the model. 
 ```
 
 ## Changes
+**version 1.1.3**
+* Bugfix on the nested array update.
+
 **version 1.1.2**
 * Added nested updates for nested ledgers 
 
