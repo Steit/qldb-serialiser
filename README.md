@@ -155,7 +155,7 @@ To update a record simply pass the updated fields in a JSON model to the model. 
 ```
 
 ## Changes
-**version 1.1.5**
+**version 1.1.5(a)**
 * Bugfix in the selection of fields on SELECT statements.
 * **Breaking change**: removal of the GetAll function. Since pagination is not supported and the args selector was ambiguous to the GetBy function.
 
