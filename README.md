@@ -155,7 +155,10 @@ To update a record simply pass the updated fields in a JSON model to the model. 
 ```
 
 ## Changes
-**version 1.1.5 & 1.1.6 **
+**version 1.1.7**
+* Moved to the 1.0.0-rc.1 of the amazon-qldb-driver-nodejs
+
+**version 1.1.5 & 1.1.6**
 * Bugfix in the selection of fields on SELECT statements.
 * **Breaking change**: removal of the GetAll function. Since pagination is not supported and the args selector was ambiguous to the GetBy function.
 
