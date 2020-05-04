@@ -155,7 +155,7 @@ To update a record simply pass the updated fields in a JSON model to the model. 
 ```
 
 ## Changes
-**version 1.1.7 - 1.1.11 **
+**version 1.1.7 - 1.1.12 **
 * Moved to the 1.0.0-rc.1 of the amazon-qldb-driver-nodejs
 * Minor bugfixes
 
