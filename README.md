@@ -153,9 +153,26 @@ To update a record simply pass the updated fields in a JSON model to the model. 
 
     }
 ```
+### Operators
+Since version 1.1.13 operators have been created on the where clause. The available operators are: 'EQ','NE','IN','NOTIN','GT','GTE','LT','LTE'
+
+```javascript
+    const {Operators} = require('qldb-serialiser');
+    let args = {
+        where: {
+            id: userId,
+            memberType: [ Operators.NOTIN, [....]]
+        }
+    };
+```
 
 ## Changes
-**version 1.1.7 - 1.1.12 **
+**version 1.1.13**
+* Introduced operators for the where clause
+* Moved the DataTypes to a separate file (qldb.datatypes.js)
+* Added Operations in separate file (qldb.operators.js)
+
+**version 1.1.7 - 1.1.12**
 * Moved to the 1.0.0-rc.1 of the amazon-qldb-driver-nodejs
 * Minor bugfixes
 
