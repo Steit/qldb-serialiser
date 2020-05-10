@@ -153,6 +153,22 @@ To update a record simply pass the updated fields in a JSON model to the model. 
 
     }
 ```
+
+### Deleting a record
+To delete a record you can simply call the delete function. The flag 'recursive' will also go down the tree of linked LEGER types and also delete those.
+When the {recursive: false} is set or when omitted only the first level will be deleted. 
+```javascript
+    async deleteDocument(docId)  {
+        const args = {
+           where: { id: docId }, 
+           recursive: true 
+        }
+        let result = await Document.delete(args);
+        if(result) return result;
+        return false;
+    }
+```
+
 ### Operators
 Since version 1.1.13 operators have been created on the where clause. The available operators are: 'EQ','NE','IN','NOTIN','GT','GTE','LT','LTE'
 
@@ -167,6 +183,9 @@ Since version 1.1.13 operators have been created on the where clause. The availa
 ```
 
 ## Changes
+**version 1.1.13**
+* Added a delete function complete with recursiveness.
+
 **version 1.1.13**
 * Introduced operators for the where clause
 * Moved the DataTypes to a separate file (qldb.datatypes.js)
