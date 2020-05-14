@@ -26,7 +26,8 @@
     "amazon-qldb-driver-nodejs": "^1.0.0-rc.1",
     "aws-sdk": "^2.654.0",
     "ion-js": "^4.0.0",
-    "jsbi": "^3.1.2"
+    "jsbi": "^3.1.2",
+    "lodash": "^4.17.15"
   },
   "keywords": [
     "qldb",
