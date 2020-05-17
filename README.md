@@ -122,7 +122,7 @@ When inserting data into the LEDGER type standard JSON is expected. All fieldnam
 The next samples show how to interact with the models to manipulate the data in the QLDB. The next few samples use the Asset model as described above.
 The sample functions are indicative. 
 ### Reading a record
-Reads can be done in serveral ways. There are three functions; `'getAll()'`, `'getBy()'` and `'getByPk()'`. The `'getByPk()'` function is a wrapper around the `'getBy()'` function thet finds the Primary key of the model and based on that creates the where clause needed by the `'getBy()'` function.
+Reads can be done in serveral ways. There are three functions; `'getAll()'`, `'getBy()'` and `'getByPk()'`. The `'getByPk()'` function is a wrapper around the `'getBy()'` function that finds the Primary key of the model and based on that creates the where clause needed by the `'getBy()'` function.
 ````javascript
     async getAssetById(assetId){
         let assetResult = await Asset.getByPk(assetId);
@@ -138,6 +138,18 @@ The adding of a record is done by passing the JSON containing all fields to the 
 ````javascript
     async createAsset(asset){
         let assetResult = await Asset.add(asset);
+        if(assetResult) return assetResult;
+        return false
+    }
+````
+
+### Select records using arguments
+By using the argument `'fields'` in the argument when selecting using the `'getBy()'` or `'getOneBy()'` only those fields will be returned in the results.
+If `'fields'` is omitted it acts like a 'SELECT * FROM ...' and will return all fields.
+````javascript
+    const args = { fields: ['fileName'] , where: { id: assetId, fileType: 'jpg' } }
+    async getAsset(args){
+        let assetResult = await Asset.getBy(asset);
         if(assetResult) return assetResult;
         return false
     }
@@ -182,8 +194,28 @@ Since version 1.1.13 operators have been created on the where clause. The availa
     };
 ```
 
+### Fake ordering and fake pagination
+PartiQL currently does not support ordering of fields or pagination. In order to be able to have some sort of ordering and pagination functions have been added to order the results and paginate them.
+Note that this is only an ordering and pagination AFTER the results come back from the QLDB Ledger. So your result initially will still be a full result with possible 100s of results and then paginated.
+**Only the first order element is used if present, the rest are ignored.**
+```javascript
+    const args = {
+        where: {id: userId },
+        order: {
+            name: 'desc'
+        },
+        offset: pageOffset,
+        limit: pageResults ,
+    };
+```
+
+
 ## Changes
-**version 1.1.13**
+**version 1.1.15**
+* Added 'fake' ordering and 'fake' pagination
+* Added documentation on selecting specific fields.
+
+**version 1.1.14**
 * Added a delete function complete with recursiveness.
 
 **version 1.1.13**
