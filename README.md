@@ -211,9 +211,11 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 1.1.17**
+* Merged the fork from aealth back into the main branch.
+
 **version 1.1.16**
 * Minor bugfix on where for numeric values.
-* Merged the fork from aealth back into the main branch.
 
 **version 1.1.15**
 * Added 'fake' ordering and 'fake' pagination
