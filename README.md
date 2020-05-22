@@ -211,6 +211,10 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 1.1.18**
+* Added DataTypes.JSON for unstructured data.
+* Merged downstream changes by sitleon
+
 **version 1.1.17**
 * Merged the fork from aealth back into the main branch.
 
