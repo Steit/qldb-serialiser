@@ -181,6 +181,36 @@ When the {recursive: false} is set or when omitted only the first level will be 
     }
 ```
 
+### Searching for a record
+The field name in the where clause in the args can be defined in several ways. When referring to a field name in the table use the name of the field. When referring to a field in an object use the dotted notation. 
+When referring to a field in a linked ledger use the name and an object as the search values:
+
+First level fields:
+```javascript
+    const args = {
+       where: { id: docId }, 
+    }
+```
+
+Second level fields
+```javascript
+    const args = {
+       where: { 'addres.street': streetName }, 
+    }
+```
+  
+Search in a linked Ledger  
+```javascript
+    const args = {
+       where: { 
+          addres: {
+            street: streetName,
+            number: '55' 
+          }, 
+    }
+```
+   
+
 ### Operators
 Since version 1.1.13 operators have been created on the where clause. The available operators are: 'EQ','NE','IN','NOTIN','GT','GTE','LT','LTE'
 
@@ -211,6 +241,10 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 1.2.0**
+* Changed Ledger based linking from documentId to primary key of the linked ledger. **This is a breaking change.**
+* Extended the where clause to search in linked ledgers
+
 **version 1.1.18**
 * Added DataTypes.JSON for unstructured data.
 * Merged downstream changes by sitleon
