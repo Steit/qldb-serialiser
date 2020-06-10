@@ -1,7 +1,7 @@
 {
   "name": "qldb-serialiser",
   "description": "QLDB ORM for Node.JS",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "maintainers": [
     "Steit Slings<steit.slings@gmail.com>"
   ],
@@ -23,7 +23,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "amazon-qldb-driver-nodejs": "^1.0.0-rc.1",
+    "amazon-qldb-driver-nodejs": "^1.0.0",
     "aws-sdk": "^2.654.0",
     "ion-js": "^4.0.0",
     "jsbi": "^3.1.2",
