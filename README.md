@@ -241,6 +241,9 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 1.2.2**
+* Downstream merge of additional driver parameters. 
+
 **version 1.2.1**
 * Changed to the release (1.0.0) version of the amazon-qldb-driver-nodejs driver
 
