@@ -18,8 +18,10 @@ Connector (/config/qldb.connect.js)
 const {qldbConnect, Ledger, DataTypes} = require('qldb-serialiser');
 
 let qldbSettings = {
-    "region": process.env.AWS_REGION,
-    "sslEnabled": true,
+    maxConcurrentTransactions: 10,
+    retryLimit: 4,
+    region: process.env.AWS_REGION,
+    sslEnabled: true
 };
 let qldb = new qldbConnect(process.env.QLDB_NAME, qldbSettings);
 qldb.getTableNames()
@@ -241,6 +243,9 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.0**
+* Changed to the release (2.0.0) version of the amazon-qldb-driver-nodejs driver
+
 **version 1.2.2**
 * Downstream merge of additional driver parameters. 
 
