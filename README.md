@@ -212,6 +212,7 @@ Search in a linked Ledger
     }
 ```
 ### Fetching History of Document
+QLDB stores the complete history of every document in a table. You can see all the revisions of document you previously inserted, updated and deleted using ```getHistoryBy()``` method. 
 
 ````javascript
     let args = {
