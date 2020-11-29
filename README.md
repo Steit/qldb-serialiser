@@ -90,12 +90,12 @@ const Asset = new Ledger(qldb, 'Assets', {
             allowNull: false,
         },
         hideOwner: {
-            type: DataTypes.BOOL,
+            type: DataTypes.BOOLEAN,
             allowNull: false,
             default: false
         },
         hidePrice: {
-            type: DataTypes.BOOL,
+            type: DataTypes.BOOLEAN,
             allowNull: false,
             default: false
         }
@@ -211,7 +211,21 @@ Search in a linked Ledger
           }, 
     }
 ```
-   
+### Fetching History of Document
+
+````javascript
+    let args = {
+        where:{
+            Name:"Asset1"
+        }
+    }
+    async getHistory(args){
+        let assetHistory = await Asset.getHistoryBy(args);
+        if(assetHistory) return assetHistory;
+        return false
+    }
+````
+
 
 ### Operators
 Since version 1.1.13 operators have been created on the where clause. The available operators are: 'EQ','NE','IN','NOTIN','GT','GTE','LT','LTE'
