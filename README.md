@@ -258,6 +258,9 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.1**
+* Added getHistoryBy functionality to model, ability to add array of strings ,numbers to array data type without model
+
 **version 2.0.0**
 * Changed to the release (2.0.0) version of the amazon-qldb-driver-nodejs driver
 
