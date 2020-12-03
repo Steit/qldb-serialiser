@@ -50,7 +50,7 @@ const Asset = new Ledger(qldb, 'Assets', {
             type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
-            index:true
+            index: true
         },
         assetData: {
             type: DataTypes.LEDGER,
@@ -60,7 +60,7 @@ const Asset = new Ledger(qldb, 'Assets', {
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-            index:true
+            index: true
         },
         description: {
             type: DataTypes.STRING,
@@ -109,11 +109,12 @@ const Asset = new Ledger(qldb, 'Assets', {
 module.exports = Asset;
 ```
 Note that in the above sample nested models are made possible with the usage of the DataTypes.LEDGER.
-+ *Working with Indexes*:
-QLDB Supports Indexes. Indexes are optional in QLDB, but indexes improve query performance for seek operations. [See Optimizing query performance] (https://docs.aws.amazon.com/qldb/latest/developerguide/working.optimize.html)
+##### Working with Indexes:
+QLDB Supports Indexes. indexes improve query performance for seek operations. [See Optimizing query performance](https://docs.aws.amazon.com/qldb/latest/developerguide/working.optimize.html)
 
-So, We've added a wrapper to create indexes on field by setting ```index:true```
-Note that, You can create upto 5 indexes on top levele fields per single table.[See QLDB Docs] (https://docs.aws.amazon.com/qldb/latest/developerguide/working.create.html)
+So, We've added a wrapper to create indexes on field by setting ```index: true```
+
+Note that, You can create upto 5 indexes on top level fields only per single table.[See QLDB Docs](https://docs.aws.amazon.com/qldb/latest/developerguide/working.create.html)
 
 
 When inserting data into the LEDGER type standard JSON is expected. All fieldnames are tested in the same way as any other model.
