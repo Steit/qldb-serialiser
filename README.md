@@ -114,7 +114,7 @@ QLDB Supports Indexes. indexes improve query performance for seek operations. [S
 
 So, We've added a wrapper to create indexes on field by setting ```index: true```
 
-Note that, You can create upto 5 indexes on top level fields only per single table.[See QLDB Docs](https://docs.aws.amazon.com/qldb/latest/developerguide/working.create.html)
+Note that, You can create upto 5 indexes only on top level fields per single table.[See QLDB Docs](https://docs.aws.amazon.com/qldb/latest/developerguide/working.create.html)
 
 
 When inserting data into the LEDGER type standard JSON is expected. All fieldnames are tested in the same way as any other model.
@@ -221,7 +221,7 @@ Search in a linked Ledger
     }
 ```
 ### Fetching History of Document
-QLDB stores the complete history of every document in a table. You can see all the revisions of document you previously inserted, updated and deleted using ```getHistoryBy()``` method. 
+QLDB stores the complete history of every document in a table. You can see all the revisions of document you previously inserted, updated and deleted using ```getHistoryBy()```, ```getHistoryByPk()```, ```getHistoryByDocumentId()``` methods. 
 
 ````javascript
     let args = {
