@@ -267,6 +267,9 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.2**
+* Added indexes
+
 **version 2.0.1**
 * Added getHistoryBy functionality to model, ability to add array of strings ,numbers to array data type without model
 
