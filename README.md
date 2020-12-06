@@ -50,6 +50,7 @@ const Asset = new Ledger(qldb, 'Assets', {
             type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
+            index: true
         },
         assetData: {
             type: DataTypes.LEDGER,
@@ -59,6 +60,7 @@ const Asset = new Ledger(qldb, 'Assets', {
         title: {
             type: DataTypes.STRING,
             allowNull: false,
+            index: true
         },
         description: {
             type: DataTypes.STRING,
@@ -90,12 +92,12 @@ const Asset = new Ledger(qldb, 'Assets', {
             allowNull: false,
         },
         hideOwner: {
-            type: DataTypes.BOOL,
+            type: DataTypes.BOOLEAN,
             allowNull: false,
             default: false
         },
         hidePrice: {
-            type: DataTypes.BOOL,
+            type: DataTypes.BOOLEAN,
             allowNull: false,
             default: false
         }
@@ -106,7 +108,14 @@ const Asset = new Ledger(qldb, 'Assets', {
 
 module.exports = Asset;
 ```
-Note that in the above sample nested models are made possible with the usage of the DataTypes.LEDGER. 
+Note that in the above sample nested models are made possible with the usage of the DataTypes.LEDGER.
+##### Working with Indexes:
+QLDB Supports Indexes. indexes improve query performance for seek operations. [See Optimizing query performance](https://docs.aws.amazon.com/qldb/latest/developerguide/working.optimize.html)
+
+So, We've added a wrapper to create indexes on field by setting ```index: true```
+
+Note that, You can create upto 5 indexes only on top level fields per single table.[See QLDB Docs](https://docs.aws.amazon.com/qldb/latest/developerguide/working.create.html)
+
 
 When inserting data into the LEDGER type standard JSON is expected. All fieldnames are tested in the same way as any other model.
  ```json
@@ -211,7 +220,22 @@ Search in a linked Ledger
           }, 
     }
 ```
-   
+### Fetching History of Document
+QLDB stores the complete history of every document in a table. You can see all the revisions of document you previously inserted, updated and deleted using ```getHistoryBy()```, ```getHistoryByPk()```, ```getHistoryByDocumentId()``` methods. 
+
+````javascript
+    let args = {
+        where:{
+            Name:"Asset1"
+        }
+    }
+    async getHistory(args){
+        let assetHistory = await Asset.getHistoryBy(args);
+        if(assetHistory) return assetHistory;
+        return false
+    }
+````
+
 
 ### Operators
 Since version 1.1.13 operators have been created on the where clause. The available operators are: 'EQ','NE','IN','NOTIN','GT','GTE','LT','LTE'
@@ -243,6 +267,9 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.1**
+* Added getHistoryBy functionality to model, ability to add array of strings ,numbers to array data type without model
+
 **version 2.0.0**
 * Changed to the release (2.0.0) version of the amazon-qldb-driver-nodejs driver
 
