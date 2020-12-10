@@ -267,6 +267,9 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.3**
+* Bug fixes
+
 **version 2.0.2**
 * Added indexes
 
