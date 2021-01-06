@@ -267,6 +267,10 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.4**
+* Added fake pagination to history
+* Added fake ordering to numbered fields and sorting by date 'createdAt/updatedAt'
+
 **version 2.0.3**
 * Bug fixes
 
