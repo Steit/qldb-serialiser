@@ -1,7 +1,7 @@
 {
   "name": "qldb-serialiser",
   "description": "QLDB ORM for Node.JS",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "maintainers": [
     "Steit Slings<steit.slings@gmail.com>"
   ],
