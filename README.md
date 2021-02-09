@@ -235,7 +235,29 @@ QLDB stores the complete history of every document in a table. You can see all t
         return false
     }
 ````
+### Fetching Committed Document With metadata and hash
 
+````javascript
+    let args = {
+      where: {
+        hash: "KGfCsRGs0xhm075l/JuEtvQzT9+Ul5g02h4gaDZLNV0=",
+        metadata: {
+          version: 27,
+          id: "QdxjzbojUtC0pkd80wLw6t",
+          txId: "9QcF6tHjDRKCYYuQxYt7zX"
+        },
+        data: {
+          Name: "Asset1",
+          Color: "Green"
+        }
+      }
+    };
+    async getCommittedDocumentBy(args){
+        let committedDocumentRevision = await Asset.getCommittedDocumentBy(args);
+        if(committedDocumentRevision) return committedDocumentRevision;
+        return false
+    }
+````
 
 ### Operators
 Since version 1.1.13 operators have been created on the where clause. The available operators are: 'EQ','NE','IN','NOTIN','GT','GTE','LT','LTE'
@@ -267,6 +289,9 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.5**
+* fetching committed document revision by its metadata and hashes
+
 **version 2.0.4**
 * Added fake pagination to history
 * Added fake ordering to numbered fields and sorting by date 'createdAt/updatedAt'
