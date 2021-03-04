@@ -158,9 +158,19 @@ The adding of a record is done by passing the JSON containing all fields to the 
 By using the argument `'fields'` in the argument when selecting using the `'getBy()'` or `'getOneBy()'` only those fields will be returned in the results.
 If `'fields'` is omitted it acts like a 'SELECT * FROM ...' and will return all fields.
 ````javascript
-    const args = { fields: ['fileName'] , where: { id: assetId, fileType: 'jpg' } }
+    const args = {
+        where: {
+          Name: 'Asset1',
+          Price: 35,
+          isActive: true,
+          OR:{
+            Color:'Green',
+            Weight: 28
+          }
+        }
+      }
     async getAsset(args){
-        let assetResult = await Asset.getBy(asset);
+        let assetResult = await Asset.getBy(args);
         if(assetResult) return assetResult;
         return false
     }
@@ -224,11 +234,17 @@ Search in a linked Ledger
 QLDB stores the complete history of every document in a table. You can see all the revisions of document you previously inserted, updated and deleted using ```getHistoryBy()```, ```getHistoryByPk()```, ```getHistoryByDocumentId()``` methods. 
 
 ````javascript
-    let args = {
-        where:{
-            Name:"Asset1"
+    const query = {
+        where: {
+          Name: 'Asset1',
+          Price: 35,
+          isActive: true,
+          OR:{
+            Color:'Green',
+            Weight: 28
+          }
         }
-    }
+      }
     async getHistory(args){
         let assetHistory = await Asset.getHistoryBy(args);
         if(assetHistory) return assetHistory;
@@ -289,6 +305,9 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.6**
+* Adding OR Operator in SqlWhere, adding WHERE compatibility for boolean data types
+
 **version 2.0.5**
 * fetching committed document revision by its metadata and hashes
 
