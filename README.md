@@ -175,7 +175,24 @@ If `'fields'` is omitted it acts like a 'SELECT * FROM ...' and will return all 
         return false
     }
 ````
+### Reading, Updating, Deleting Records with DocumentId
+Set `'useDocumentId: true'` to read, update, delete records with documentId and add `'documentId'` attribute in where clause.
+By using the argument `'documentId'` in  `'where'` object, you can read, update, delete records using QLDB's unique document Identifier.
 
+
+````javascript
+    const args = {
+      useDocumentId: true, // Set to true if you're doing operations using documentId
+        where: {
+          documentId:'LuK62uYWnEG8ygfMChBj6V'
+        }
+      }
+    async getAsset(args){
+        let assetResult = await Asset.getBy(args);
+        if(assetResult) return assetResult;
+        return false
+    }
+````
 ### Updating a record
 To update a record simply pass the updated fields in a JSON model to the model. The form of the whereClause is the same as for a search action '{ fieldname: fieldValue }'. 
 ```javascript
@@ -305,6 +322,10 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.7**
+* Adding Support for Read,Update, Delete by documentId (Experimental)
+* Fixed createdAt/UpdatedAt timestamps on update operation not reflecting correctly
+
 **version 2.0.6**
 * Adding OR Operator in SqlWhere, adding WHERE compatibility for boolean data types
 
