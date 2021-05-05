@@ -176,12 +176,13 @@ If `'fields'` is omitted it acts like a 'SELECT * FROM ...' and will return all 
     }
 ````
 ### Reading, Updating, Deleting Records with DocumentId
-By using the argument `'documentId'` in  `'where'` object, you can Read, Update, Delete Records using QLDB's unique document Identifier. 
+Set `'useDocumentId: true'` to read, update, delete records with documentId and add `'documentId'` attribute in where clause.
+By using the argument `'documentId'` in  `'where'` object, you can read, update, delete records using QLDB's unique document Identifier.
 
->Note: The attribute `'documentId'` is reserved for this operation. make sure your business schema doesn't have a 'documentId' specified in model. 
 
 ````javascript
     const args = {
+      useDocumentId: true, // Set to true if you're doing operations using documentId
         where: {
           documentId:'LuK62uYWnEG8ygfMChBj6V'
         }
