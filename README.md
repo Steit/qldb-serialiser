@@ -4,6 +4,8 @@ The QLDB Serialiser is a promise-based Node.js ORM for the AWS QLDB Ledger. It i
 
 QLDB Serialise uses the AWS Node.js drivers. See [AWS Qldb node.js driver](https://www.npmjs.com/package/amazon-qldb-driver-nodejs) for more on this.
 
+[![NPM](https://nodei.co/npm/qldb-serialiser.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/qldb-serialiser)
+
 ## Installation
 
 ```bash
@@ -322,6 +324,9 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.8**
+* Changed to the release (2.2.0) version of the amazon-qldb-driver-nodejs driver
+
 **version 2.0.7**
 * Adding Support for Read,Update, Delete by documentId (Experimental)
 * Fixed createdAt/UpdatedAt timestamps on update operation not reflecting correctly
