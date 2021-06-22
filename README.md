@@ -324,6 +324,11 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.9**
+* Adding Support for Read, Update, Delete, History by documentId
+* Minor fixes
+
+
 **version 2.0.8**
 * Changed to the release (2.2.0) version of the amazon-qldb-driver-nodejs driver
 

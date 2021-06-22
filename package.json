@@ -1,9 +1,10 @@
 {
   "name": "qldb-serialiser",
   "description": "QLDB ORM for Node.JS",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "maintainers": [
-    "Steit Slings<steit.slings@gmail.com>"
+    "Steit Slings <steit.slings@gmail.com>",
+    "Salman Dabbakuti <dabbakuti.salman@gmail.com>"
   ],
   "repository": {
     "type": "git",
