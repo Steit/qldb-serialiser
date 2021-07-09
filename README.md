@@ -134,6 +134,10 @@ When inserting data into the LEDGER type standard JSON is expected. All fieldnam
 ## Using records
 The next samples show how to interact with the models to manipulate the data in the QLDB. The next few samples use the Asset model as described above.
 The sample functions are indicative. 
+
+### Model synchronization
+A model can be synchronized with the database by calling `'AssetModel.sync()'`. It will check if table and defined indexes exists in ledger and creates table and indexes if not existed. Call it only once after model is defined.
+
 ### Reading a record
 Reads can be done in serveral ways. There are three functions; `'getAll()'`, `'getBy()'` and `'getByPk()'`. The `'getByPk()'` function is a wrapper around the `'getBy()'` function that finds the Primary key of the model and based on that creates the where clause needed by the `'getBy()'` function.
 ````javascript
@@ -324,10 +328,12 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.10**
+* Added model synchronization
+
 **version 2.0.9**
 * Adding Support for Read, Update, Delete, History by documentId
 * Minor fixes
-
 
 **version 2.0.8**
 * Changed to the release (2.2.0) version of the amazon-qldb-driver-nodejs driver
