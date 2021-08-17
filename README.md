@@ -328,6 +328,9 @@ Note that this is only an ordering and pagination AFTER the results come back fr
 
 
 ## Changes
+**version 2.0.11-rc.0**
+* insert/read/update string data as ion literals (fixes issue with apostrophe in string data)
+
 **version 2.0.10**
 * Added model synchronization
 
